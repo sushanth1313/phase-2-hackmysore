@@ -120,7 +120,7 @@ export default function RecruiterMessages() {
             </div>
           ) : conversations.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 px-5 text-center">
-              <MessageSquare className="w-10 h-10 text-slate-600 mb-3" />
+              <MessageSquare className="w-10 h-10 text-slate-300 mb-3" />
               <p className="text-slate-900 font-bold text-sm mb-1">No conversations yet</p>
               <p className="text-slate-500 text-xs">Contact a candidate from the Talent Discovery page to start a conversation.</p>
             </div>
@@ -136,7 +136,7 @@ export default function RecruiterMessages() {
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-slate-900 text-sm shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center font-bold text-slate-600 text-sm shrink-0">
                         {other?.firstName?.[0] || '?'}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -157,7 +157,7 @@ export default function RecruiterMessages() {
       <div className="flex-1 flex flex-col bg-slate-50">
         {!selectedConv ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
-            <MessageSquare className="w-16 h-16 text-slate-700 mb-4" />
+            <MessageSquare className="w-16 h-16 text-slate-300 mb-4" />
             <p className="text-slate-900 font-bold mb-1">Select a conversation</p>
             <p className="text-slate-500 text-sm">Choose a conversation from the left to view messages.</p>
           </div>
@@ -166,7 +166,7 @@ export default function RecruiterMessages() {
             {/* Header */}
             <div className="h-14 border-b border-slate-200 flex items-center px-6 bg-white">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-slate-900 text-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center font-bold text-slate-600 text-sm">
                   {getOtherParticipant(selectedConv)?.firstName?.[0]}
                 </div>
                 <div>
@@ -195,7 +195,7 @@ export default function RecruiterMessages() {
                     <div key={msg._id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-[70%] rounded-2xl px-4 py-2.5 ${
                         isOwn
-                          ? 'bg-brand-600 text-slate-900 rounded-br-sm'
+                          ? 'bg-brand-600 text-white rounded-br-sm shadow-sm'
                           : 'bg-white border border-slate-200 text-slate-700 rounded-bl-sm'
                       }`}>
                         {!isOwn && (

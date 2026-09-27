@@ -111,7 +111,7 @@ export default function CandidateMessages() {
     <div className="w-full h-[calc(100vh-64px)] flex overflow-hidden">
 
       {/* Sidebar */}
-      <div className="w-80 shrink-0 bg-[#080D1A] border-r border-slate-200 flex flex-col">
+      <div className="w-80 shrink-0 bg-white border-r border-slate-200 flex flex-col">
         <div className="p-4 border-b border-slate-200">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
@@ -160,7 +160,7 @@ export default function CandidateMessages() {
                   className={`w-full text-left p-4 border-b border-slate-200 transition-all hover:bg-slate-100 ${isActive ? 'bg-brand-50 border-l-2 border-l-brand-500' : ''}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shrink-0">
                       <span className="text-xs font-bold text-slate-600">
                         {other?.firstName?.[0]?.toUpperCase() || '?'}
                       </span>
@@ -197,12 +197,12 @@ export default function CandidateMessages() {
       {selectedConv ? (
         <div className="flex-1 flex flex-col min-w-0">
           {/* Chat Header */}
-          <div className="p-4 border-b border-slate-200 bg-[#080D1A] flex items-center gap-3">
+          <div className="p-4 border-b border-slate-200 bg-white flex items-center gap-3">
             {(() => {
               const other = getOtherParticipant(selectedConv);
               return (
                 <>
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
                     <span className="text-sm font-bold text-slate-600">{other?.firstName?.[0]?.toUpperCase() || '?'}</span>
                   </div>
                   <div>
@@ -238,7 +238,7 @@ export default function CandidateMessages() {
                       )}
                       <div className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                         isMe
-                          ? 'bg-brand-600 text-slate-900 rounded-tr-sm shadow-lg shadow-brand-500/20'
+                          ? 'bg-brand-600 text-white rounded-tr-sm shadow-sm'
                           : 'bg-white border border-slate-200 text-slate-700 rounded-tl-sm'
                       }`}>
                         {msg.content}
@@ -255,7 +255,7 @@ export default function CandidateMessages() {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-slate-200 bg-[#080D1A]">
+          <div className="p-4 border-t border-slate-200 bg-white">
             <div className="flex gap-3 items-end">
               <textarea
                 value={newMsg}
@@ -276,10 +276,10 @@ export default function CandidateMessages() {
           </div>
         </div>
       ) : (
-        <div className="flex-1 flex flex-col items-center justify-center bg-[#080D1A]">
-          <MessageSquare className="w-16 h-16 text-slate-800 mb-4" />
-          <h3 className="text-lg font-bold text-slate-600 mb-2">Select a conversation</h3>
-          <p className="text-slate-600 text-sm">Choose a conversation from the sidebar to start messaging.</p>
+        <div className="flex-1 flex flex-col items-center justify-center bg-slate-50">
+          <MessageSquare className="w-16 h-16 text-slate-300 mb-4" />
+          <h3 className="text-lg font-bold text-slate-700 mb-2">Select a conversation</h3>
+          <p className="text-slate-500 text-sm">Choose a conversation from the sidebar to start messaging.</p>
         </div>
       )}
     </div>
