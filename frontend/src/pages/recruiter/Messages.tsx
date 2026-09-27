@@ -100,10 +100,10 @@ export default function RecruiterMessages() {
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out h-[calc(100vh-4rem)] flex">
 
       {/* SIDEBAR — Conversations */}
-      <div className="w-80 border-r border-slate-800/60 bg-[#0D1322] flex flex-col shrink-0">
-        <div className="p-5 border-b border-slate-800/60">
-          <h1 className="text-lg font-black text-white flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-brand-400" /> Messages
+      <div className="w-80 border-r border-slate-200 bg-white flex flex-col shrink-0">
+        <div className="p-5 border-b border-slate-200">
+          <h1 className="text-lg font-black text-slate-900 flex items-center gap-2">
+            <MessageSquare className="w-5 h-5 text-brand-600" /> Messages
           </h1>
         </div>
 
@@ -111,7 +111,7 @@ export default function RecruiterMessages() {
           {loadingConvs ? (
             <div className="flex flex-col items-center justify-center py-12">
               <Loader2 className="w-6 h-6 text-brand-500 animate-spin mb-2" />
-              <p className="text-slate-400 text-xs">Loading conversations...</p>
+              <p className="text-slate-500 text-xs">Loading conversations...</p>
             </div>
           ) : error ? (
             <div className="p-5 text-center">
@@ -121,7 +121,7 @@ export default function RecruiterMessages() {
           ) : conversations.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 px-5 text-center">
               <MessageSquare className="w-10 h-10 text-slate-600 mb-3" />
-              <p className="text-white font-bold text-sm mb-1">No conversations yet</p>
+              <p className="text-slate-900 font-bold text-sm mb-1">No conversations yet</p>
               <p className="text-slate-500 text-xs">Contact a candidate from the Talent Discovery page to start a conversation.</p>
             </div>
           ) : (
@@ -132,15 +132,15 @@ export default function RecruiterMessages() {
                 <button
                   key={conv._id}
                   onClick={() => setSelectedConv(conv)}
-                  className={`w-full text-left px-4 py-4 border-b border-slate-800/40 hover:bg-slate-800/40 transition-colors ${isSelected ? 'bg-brand-500/10 border-l-2 border-l-brand-500' : ''}`}
+                  className={`w-full text-left px-4 py-4 border-b border-slate-200 hover:bg-slate-100 transition-colors ${isSelected ? 'bg-brand-50 border-l-2 border-l-brand-500' : ''}`}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-white text-sm shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-slate-900 text-sm shrink-0">
                         {other?.firstName?.[0] || '?'}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold text-white truncate">{other?.firstName} {other?.lastName}</p>
+                        <p className="text-sm font-bold text-slate-900 truncate">{other?.firstName} {other?.lastName}</p>
                         {conv.lastMessage && <p className="text-xs text-slate-500 truncate">{conv.lastMessage}</p>}
                       </div>
                     </div>
@@ -154,23 +154,23 @@ export default function RecruiterMessages() {
       </div>
 
       {/* MAIN — Messages */}
-      <div className="flex-1 flex flex-col bg-[#070B14]">
+      <div className="flex-1 flex flex-col bg-slate-50">
         {!selectedConv ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
             <MessageSquare className="w-16 h-16 text-slate-700 mb-4" />
-            <p className="text-white font-bold mb-1">Select a conversation</p>
+            <p className="text-slate-900 font-bold mb-1">Select a conversation</p>
             <p className="text-slate-500 text-sm">Choose a conversation from the left to view messages.</p>
           </div>
         ) : (
           <>
             {/* Header */}
-            <div className="h-14 border-b border-slate-800/60 flex items-center px-6 bg-[#0D1322]">
+            <div className="h-14 border-b border-slate-200 flex items-center px-6 bg-white">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-white text-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-slate-900 text-sm">
                   {getOtherParticipant(selectedConv)?.firstName?.[0]}
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-white leading-tight">
+                  <p className="text-sm font-bold text-slate-900 leading-tight">
                     {getOtherParticipant(selectedConv)?.firstName} {getOtherParticipant(selectedConv)?.lastName}
                   </p>
                   <p className="text-[10px] text-slate-500 uppercase">{getOtherParticipant(selectedConv)?.role}</p>
@@ -195,11 +195,11 @@ export default function RecruiterMessages() {
                     <div key={msg._id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-[70%] rounded-2xl px-4 py-2.5 ${
                         isOwn
-                          ? 'bg-brand-600 text-white rounded-br-sm'
-                          : 'bg-[#0D1322] border border-slate-800 text-slate-200 rounded-bl-sm'
+                          ? 'bg-brand-600 text-slate-900 rounded-br-sm'
+                          : 'bg-white border border-slate-200 text-slate-700 rounded-bl-sm'
                       }`}>
                         {!isOwn && (
-                          <p className="text-[10px] font-bold text-brand-400 mb-1">
+                          <p className="text-[10px] font-bold text-brand-600 mb-1">
                             {msg.sender.firstName} {msg.sender.lastName}
                           </p>
                         )}
@@ -216,18 +216,18 @@ export default function RecruiterMessages() {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSend} className="border-t border-slate-800/60 p-4 bg-[#0D1322] flex items-center gap-3">
+            <form onSubmit={handleSend} className="border-t border-slate-200 p-4 bg-white flex items-center gap-3">
               <input
                 type="text"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
+                className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
               />
               <button
                 type="submit"
                 disabled={sending || !newMessage.trim()}
-                className="p-2.5 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white rounded-lg transition-colors"
+                className="p-2.5 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-slate-900 rounded-lg transition-colors"
               >
                 {sending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
               </button>

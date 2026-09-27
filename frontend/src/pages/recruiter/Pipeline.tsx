@@ -6,10 +6,10 @@ type Stage = 'APPLIED' | 'SHORTLISTED' | 'INTERVIEWING' | 'OFFERED' | 'HIRED' | 
 
 const STAGES: { key: Stage; label: string; color: string; bgColor: string; borderColor: string }[] = [
   { key: 'APPLIED', label: 'Applied', color: 'text-blue-400', bgColor: 'bg-blue-500/10', borderColor: 'border-blue-500/30' },
-  { key: 'SHORTLISTED', label: 'Shortlisted', color: 'text-amber-400', bgColor: 'bg-amber-500/10', borderColor: 'border-amber-500/30' },
+  { key: 'SHORTLISTED', label: 'Shortlisted', color: 'text-amber-600', bgColor: 'bg-amber-50', borderColor: 'border-amber-500/30' },
   { key: 'INTERVIEWING', label: 'Interviewing', color: 'text-purple-400', bgColor: 'bg-purple-500/10', borderColor: 'border-purple-500/30' },
   { key: 'OFFERED', label: 'Offered', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10', borderColor: 'border-indigo-500/30' },
-  { key: 'HIRED', label: 'Hired', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10', borderColor: 'border-emerald-500/30' },
+  { key: 'HIRED', label: 'Hired', color: 'text-emerald-600', bgColor: 'bg-emerald-50', borderColor: 'border-emerald-500/30' },
   { key: 'REJECTED', label: 'Rejected', color: 'text-red-400', bgColor: 'bg-red-500/10', borderColor: 'border-red-500/30' }
 ];
 
@@ -101,18 +101,18 @@ export default function HiringPipeline() {
 
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 text-brand-400 font-bold text-xs uppercase tracking-widest mb-1">
+        <div className="flex items-center gap-2 text-brand-600 font-bold text-xs uppercase tracking-widest mb-1">
           <GitMerge className="w-4 h-4" /> Recruitment
         </div>
-        <h1 className="text-3xl font-black text-white tracking-tight">Hiring Pipeline</h1>
-        <p className="text-slate-400 text-sm mt-1">Track candidates through each stage of your hiring process.</p>
+        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Hiring Pipeline</h1>
+        <p className="text-slate-500 text-sm mt-1">Track candidates through each stage of your hiring process.</p>
       </div>
 
       {/* Stage pills */}
       <div className="flex flex-wrap gap-2 mb-6">
         <button
           onClick={() => setSelectedStage('ALL')}
-          className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border ${selectedStage === 'ALL' ? 'bg-brand-600 text-white border-brand-500' : 'text-slate-400 border-slate-700 hover:border-slate-500'}`}
+          className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border ${selectedStage === 'ALL' ? 'bg-brand-600 text-slate-900 border-brand-500' : 'text-slate-500 border-slate-200 hover:border-slate-500'}`}
         >
           All ({applications.length})
         </button>
@@ -122,7 +122,7 @@ export default function HiringPipeline() {
             <button
               key={s.key}
               onClick={() => setSelectedStage(s.key)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border flex items-center gap-1.5 ${selectedStage === s.key ? `${s.bgColor} ${s.color} ${s.borderColor}` : 'text-slate-400 border-slate-700 hover:border-slate-500'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border flex items-center gap-1.5 ${selectedStage === s.key ? `${s.bgColor} ${s.color} ${s.borderColor}` : 'text-slate-500 border-slate-200 hover:border-slate-500'}`}
             >
               <Icon className="w-3 h-3" /> {s.label} ({stageCounts[s.key] || 0})
             </button>
@@ -138,7 +138,7 @@ export default function HiringPipeline() {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Search by candidate name or job title..."
-          className="w-full max-w-md bg-[#0D1322] border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
+          className="w-full max-w-md bg-white border border-slate-200 rounded-lg pl-9 pr-4 py-2.5 text-sm text-slate-700 focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
         />
       </div>
 
@@ -147,7 +147,7 @@ export default function HiringPipeline() {
         {STAGES.map(s => (
           <div
             key={s.key}
-            className={`bg-[#0D1322] border rounded-xl p-4 text-center cursor-pointer transition-all ${selectedStage === s.key ? `${s.borderColor}` : 'border-slate-800/80 hover:border-slate-700'}`}
+            className={`bg-white border rounded-xl p-4 text-center cursor-pointer transition-all ${selectedStage === s.key ? `${s.borderColor}` : 'border-slate-200 hover:border-slate-200'}`}
             onClick={() => setSelectedStage(s.key === selectedStage ? 'ALL' : s.key)}
           >
             <div className={`text-2xl font-black ${s.color}`}>{stageCounts[s.key] || 0}</div>
@@ -160,19 +160,19 @@ export default function HiringPipeline() {
       {loading ? (
         <div className="flex flex-col items-center justify-center py-24">
           <Loader2 className="w-8 h-8 text-brand-500 animate-spin mb-3" />
-          <p className="text-slate-400 text-sm">Loading pipeline...</p>
+          <p className="text-slate-500 text-sm">Loading pipeline...</p>
         </div>
       ) : error ? (
-        <div className="flex flex-col items-center justify-center py-24 bg-[#0D1322] border border-red-500/20 rounded-2xl">
+        <div className="flex flex-col items-center justify-center py-24 bg-white border border-red-500/20 rounded-2xl">
           <AlertCircle className="w-8 h-8 text-red-400 mb-3" />
-          <p className="text-white font-bold mb-1">{error}</p>
+          <p className="text-slate-900 font-bold mb-1">{error}</p>
           <button onClick={fetchApplications} className="mt-4 px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold rounded-lg">Retry</button>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-24 bg-[#0D1322] border border-slate-800/80 rounded-2xl">
+        <div className="flex flex-col items-center justify-center py-24 bg-white border border-slate-200 rounded-2xl">
           <Users className="w-12 h-12 text-slate-600 mb-4" />
-          <p className="text-white font-bold mb-1">No candidates in pipeline</p>
-          <p className="text-slate-400 text-sm text-center max-w-sm">
+          <p className="text-slate-900 font-bold mb-1">No candidates in pipeline</p>
+          <p className="text-slate-500 text-sm text-center max-w-sm">
             {selectedStage !== 'ALL'
               ? `No candidates in the "${selectedStage}" stage yet.`
               : 'Post jobs and start receiving applications from verified candidates.'}
@@ -192,10 +192,10 @@ export default function HiringPipeline() {
             })();
 
             return (
-              <div key={app._id} className={`bg-[#0D1322] border ${stageInfo.borderColor} rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4`}>
+              <div key={app._id} className={`bg-white border ${stageInfo.borderColor} rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4`}>
                 {/* Avatar */}
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/30 to-brand-700/20 border border-brand-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-sm font-black text-brand-400">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/30 to-brand-700/20 border border-brand-200 flex items-center justify-center shrink-0">
+                  <span className="text-sm font-black text-brand-600">
                     {app.candidate.firstName?.[0]?.toUpperCase() || '?'}
                   </span>
                 </div>
@@ -203,19 +203,19 @@ export default function HiringPipeline() {
                 {/* Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-0.5">
-                    <span className="font-bold text-white">{app.candidate.firstName} {app.candidate.lastName}</span>
+                    <span className="font-bold text-slate-900">{app.candidate.firstName} {app.candidate.lastName}</span>
                     {app.candidate.track && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-brand-500/10 text-brand-400 uppercase tracking-wider">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-brand-50 text-brand-600 uppercase tracking-wider">
                         {app.candidate.track}
                       </span>
                     )}
                   </div>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                     <span>{app.candidate.email}</span>
-                    {app.job && <><ChevronRight className="w-3 h-3" /><span className="font-medium text-slate-400">{app.job.title}</span></>}
+                    {app.job && <><ChevronRight className="w-3 h-3" /><span className="font-medium text-slate-500">{app.job.title}</span></>}
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{postedAgo}</span>
                     {app.capabilityScore !== undefined && (
-                      <span className="font-bold text-brand-400">Score: {app.capabilityScore}</span>
+                      <span className="font-bold text-brand-600">Score: {app.capabilityScore}</span>
                     )}
                   </div>
                 </div>
@@ -229,7 +229,7 @@ export default function HiringPipeline() {
                 <div className="flex items-center gap-2 shrink-0">
                   <a
                     href={`/recruiter/candidate/${app.candidate._id}`}
-                    className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:text-brand-400 hover:border-brand-500/50 transition-colors"
+                    className="p-2 rounded-lg border border-slate-200 text-slate-500 hover:text-brand-600 hover:border-brand-500/50 transition-colors"
                     title="View profile"
                   >
                     <Eye className="w-4 h-4" />
@@ -240,7 +240,7 @@ export default function HiringPipeline() {
                     value={app.status}
                     disabled={movingId === app._id}
                     onChange={e => moveCandidate(app._id, e.target.value as Stage)}
-                    className="text-xs bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-slate-300 focus:outline-none focus:border-brand-500 cursor-pointer disabled:opacity-50"
+                    className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-slate-600 focus:outline-none focus:border-brand-500 cursor-pointer disabled:opacity-50"
                   >
                     {STAGES.map(s => (
                       <option key={s.key} value={s.key}>{s.label}</option>

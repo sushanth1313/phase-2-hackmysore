@@ -74,31 +74,31 @@ export default function TalentDiscovery() {
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out pb-20">
 
       {/* HERO */}
-      <section className="bg-gradient-to-b from-[#0D1322] to-[#070B14] border-b border-slate-800/50 px-6 py-12 md:px-12 md:py-16 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
+      <section className="bg-gradient-to-b from-[#0D1322] to-[#070B14] border-b border-slate-200 px-6 py-12 md:px-12 md:py-16 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brand-50 rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
             Find Engineers by What They Can Prove
           </h1>
-          <p className="text-slate-400 text-lg mb-8 max-w-2xl">
+          <p className="text-slate-500 text-lg mb-8 max-w-2xl">
             Search across verified engineering evidence, architecture decisions, and code quality signals — not just keywords on a resume.
           </p>
 
-          <form onSubmit={handleSearch} className="bg-[#0D1322] border border-slate-700 p-2 rounded-xl flex items-center gap-2 max-w-3xl shadow-2xl shadow-black/40">
-            <Search className="w-5 h-5 text-brand-400 ml-3 shrink-0" />
+          <form onSubmit={handleSearch} className="bg-white border border-slate-200 p-2 rounded-xl flex items-center gap-2 max-w-3xl shadow-2xl shadow-black/40">
+            <Search className="w-5 h-5 text-brand-600 ml-3 shrink-0" />
             <input
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Search by name..."
-              className="flex-1 bg-transparent border-none outline-none text-white px-2 py-3 placeholder:text-slate-500 text-lg"
+              className="flex-1 bg-transparent border-none outline-none text-slate-900 px-2 py-3 placeholder:text-slate-500 text-lg"
             />
             <input
               type="text"
               value={skillFilter}
               onChange={(e) => setSkillFilter(e.target.value)}
               placeholder="Skills: Go, Kafka, Redis..."
-              className="hidden md:block w-64 bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white outline-none placeholder:text-slate-600 focus:border-brand-500"
+              className="hidden md:block w-64 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 outline-none placeholder:text-slate-600 focus:border-brand-500"
             />
             <button type="submit" className="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-lg transition-colors">
               Search Evidence
@@ -112,13 +112,13 @@ export default function TalentDiscovery() {
 
         {/* LEFT: FILTERS */}
         <div className="lg:col-span-3 space-y-8">
-          <div className="flex items-center justify-between border-b border-slate-800/60 pb-4">
-            <h2 className="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-2">
-              <Filter className="w-4 h-4 text-slate-400" /> Filters
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <h2 className="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-2">
+              <Filter className="w-4 h-4 text-slate-500" /> Filters
             </h2>
             <button
               onClick={() => { setSkillFilter(''); setMinConfidence(0); }}
-              className="text-xs text-brand-400 font-semibold cursor-pointer hover:text-brand-300"
+              className="text-xs text-brand-600 font-semibold cursor-pointer hover:text-brand-600"
             >
               Reset
             </button>
@@ -133,7 +133,7 @@ export default function TalentDiscovery() {
                 onChange={(e) => setSkillFilter(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && fetchCandidates()}
                 placeholder="Go, Kafka, React..."
-                className="w-full bg-[#0D1322] border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
+                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-brand-500 placeholder:text-slate-600"
               />
             </div>
 
@@ -150,7 +150,7 @@ export default function TalentDiscovery() {
 
             <div>
               <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Verified Evidence</h3>
-              <div className="space-y-2 text-xs text-slate-400">
+              <div className="space-y-2 text-xs text-slate-500">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" className="accent-brand-500 rounded" defaultChecked />
                   Show only analyzed profiles
@@ -163,15 +163,15 @@ export default function TalentDiscovery() {
         {/* RIGHT: RESULTS */}
         <div className="lg:col-span-9 space-y-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-sm font-medium text-slate-400">
+            <h2 className="text-sm font-medium text-slate-500">
               {loading ? 'Searching...' : (
-                <>Showing <strong className="text-white">{sorted.length}</strong> matched engineers</>
+                <>Showing <strong className="text-slate-900">{sorted.length}</strong> matched engineers</>
               )}
             </h2>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="flex items-center gap-2 text-sm text-slate-300 bg-[#0D1322] border border-slate-800 px-3 py-1.5 rounded-md cursor-pointer hover:border-slate-700 focus:outline-none"
+              className="flex items-center gap-2 text-sm text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-md cursor-pointer hover:border-slate-200 focus:outline-none"
             >
               <option value="signal">Sort: Evidence Signal</option>
               <option value="projects">Sort: Project Count</option>
@@ -182,20 +182,20 @@ export default function TalentDiscovery() {
           {loading ? (
             <div className="flex flex-col items-center justify-center py-24">
               <Loader2 className="w-8 h-8 text-brand-500 animate-spin mb-3" />
-              <p className="text-slate-400 text-sm">Searching evidence graph...</p>
+              <p className="text-slate-500 text-sm">Searching evidence graph...</p>
             </div>
           ) : error ? (
-            <div className="flex flex-col items-center justify-center py-24 bg-[#0D1322] border border-red-500/20 rounded-2xl">
+            <div className="flex flex-col items-center justify-center py-24 bg-white border border-red-500/20 rounded-2xl">
               <AlertCircle className="w-8 h-8 text-red-400 mb-3" />
-              <p className="text-white font-bold mb-1">Search failed</p>
-              <p className="text-slate-400 text-sm mb-4">{error}</p>
-              <button onClick={fetchCandidates} className="px-4 py-2 bg-brand-600 text-white text-sm font-bold rounded-lg">Retry</button>
+              <p className="text-slate-900 font-bold mb-1">Search failed</p>
+              <p className="text-slate-500 text-sm mb-4">{error}</p>
+              <button onClick={fetchCandidates} className="px-4 py-2 bg-brand-600 text-slate-900 text-sm font-bold rounded-lg">Retry</button>
             </div>
           ) : sorted.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 bg-[#0D1322] border border-slate-800/80 rounded-2xl">
+            <div className="flex flex-col items-center justify-center py-24 bg-white border border-slate-200 rounded-2xl">
               <User className="w-12 h-12 text-slate-600 mb-4" />
-              <p className="text-white font-bold mb-1">No matched candidates found</p>
-              <p className="text-slate-400 text-sm">Try adjusting your search or filters.</p>
+              <p className="text-slate-900 font-bold mb-1">No matched candidates found</p>
+              <p className="text-slate-500 text-sm">Try adjusting your search or filters.</p>
             </div>
           ) : (
             sorted.map(c => (
@@ -221,23 +221,23 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
   onShortlist: () => void;
 }) {
   return (
-    <div className="bg-[#0D1322] border border-slate-800/80 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors">
+    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-200 transition-colors">
 
       {/* HEADER */}
-      <div className="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start gap-6 border-b border-slate-800/40 bg-gradient-to-r from-transparent to-slate-800/10">
+      <div className="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start gap-6 border-b border-slate-200 bg-gradient-to-r from-transparent to-slate-800/10">
         <div className="flex items-center gap-6">
-          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-2xl text-white shadow-lg">
+          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 flex items-center justify-center font-bold text-2xl text-slate-900 shadow-lg">
             {c.firstName[0]}
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-white mb-1">{c.firstName} {c.lastName}</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-1">{c.firstName} {c.lastName}</h3>
             <div className="flex items-center gap-3 mt-2">
               {c.hasEvidence ? (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs font-bold uppercase tracking-wider">
                   <CheckCircle2 className="w-3.5 h-3.5" /> Evidence Verified
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-500 text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-wider">
                   <ShieldCheck className="w-3.5 h-3.5" /> Pending Analysis
                 </span>
               )}
@@ -251,7 +251,7 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
             <Award className="w-3 h-3" /> Evidence Signal
           </div>
           {c.compositeSignal !== null ? (
-            <div className="text-5xl font-black text-brand-400 tabular-nums">{c.compositeSignal.toFixed(1)}</div>
+            <div className="text-5xl font-black text-brand-600 tabular-nums">{c.compositeSignal.toFixed(1)}</div>
           ) : (
             <div className="text-xl font-bold text-slate-600">—</div>
           )}
@@ -261,8 +261,8 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
       {/* BODY */}
       <div className="grid grid-cols-1 md:grid-cols-3">
         {/* SKILLS */}
-        <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-slate-800/40 md:col-span-1 bg-[#0a0f1c]/30">
-          <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Verified Capabilities</h4>
+        <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-slate-200 md:col-span-1 bg-slate-50/30">
+          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Verified Capabilities</h4>
           {c.skills.length === 0 ? (
             <p className="text-xs text-slate-600 italic">No capabilities detected yet. Analysis pending.</p>
           ) : (
@@ -270,10 +270,10 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
               {c.skills.slice(0, 5).map((s, i) => (
                 <div key={i}>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="text-slate-300 font-bold">{s.name}</span>
+                    <span className="text-slate-600 font-bold">{s.name}</span>
                     <span className="text-slate-500 font-mono">{s.confidence}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                     <div className="h-full bg-brand-500 rounded-full transition-all" style={{ width: `${s.confidence}%` }} />
                   </div>
                 </div>
@@ -282,10 +282,10 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
           )}
 
           {c.matchReasons.length > 0 && (
-            <div className="mt-6 pt-5 border-t border-slate-800/50 space-y-2">
+            <div className="mt-6 pt-5 border-t border-slate-200 space-y-2">
               {c.matchReasons.map((reason, i) => (
-                <div key={i} className="flex items-start gap-2 text-xs text-slate-400 leading-relaxed">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brand-400 shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-brand-600 shrink-0 mt-0.5" />
                   <span>{reason}</span>
                 </div>
               ))}
@@ -295,31 +295,31 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
 
         {/* ACTIONS */}
         <div className="p-6 md:p-8 md:col-span-2">
-          <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Proof Evidence</h4>
+          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Proof Evidence</h4>
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div>
-              <div className="text-3xl font-black text-white mb-1">{c.projectCount}</div>
+              <div className="text-3xl font-black text-slate-900 mb-1">{c.projectCount}</div>
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Analyzed Projects</div>
             </div>
             <div>
-              <div className="text-3xl font-black text-white mb-1">{c.skills.length}</div>
+              <div className="text-3xl font-black text-slate-900 mb-1">{c.skills.length}</div>
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Verified Signals</div>
             </div>
             <div>
-              <div className="text-3xl font-black text-white mb-1">
+              <div className="text-3xl font-black text-slate-900 mb-1">
                 {c.skills.filter(s => s.confidence >= 80).length}
               </div>
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">High-Confidence Skills</div>
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-400 mt-1">
+              <div className="text-sm font-bold text-slate-500 mt-1">
                 {c.lastActive ? new Date(c.lastActive).toLocaleDateString() : '—'}
               </div>
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Last Active</div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 pt-5 border-t border-slate-800/50">
+          <div className="flex flex-wrap gap-3 pt-5 border-t border-slate-200">
             <Link
               to={`/recruiter/candidate/${c._id}`}
               className="px-6 py-2.5 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors text-sm"
@@ -331,8 +331,8 @@ function CandidateCard({ candidate: c, isShortlisted, isShortlisting, onShortlis
               disabled={isShortlisted || isShortlisting}
               className={`px-6 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors ${
                 isShortlisted
-                  ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 cursor-default'
-                  : 'bg-[#070B14] border border-slate-700 text-white hover:bg-slate-800'
+                  ? 'bg-emerald-50 border border-emerald-200 text-emerald-600 cursor-default'
+                  : 'bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100'
               }`}
             >
               {isShortlisting ? (

@@ -60,22 +60,22 @@ export default function RecruiterDashboard() {
             <div className="border-l-2 border-blue-200 pl-4">
               <p className="text-[13px] font-medium text-slate-500 mb-1">Active Candidates</p>
               <div className="text-3xl font-semibold text-slate-900">{stats.activeCandidates}</div>
-              <p className="text-[12px] text-slate-400 mt-1">With verified proof of work</p>
+              <p className="text-[12px] text-slate-500 mt-1">With verified proof of work</p>
             </div>
             <div className="border-l-2 border-slate-200 pl-4">
               <p className="text-[13px] font-medium text-slate-500 mb-1">New Submissions</p>
               <div className="text-3xl font-semibold text-slate-900">{stats.newSubmissions}</div>
-              <p className="text-[12px] text-slate-400 mt-1">Platform-wide projects</p>
+              <p className="text-[12px] text-slate-500 mt-1">Platform-wide projects</p>
             </div>
             <div className="border-l-2 border-slate-200 pl-4">
               <p className="text-[13px] font-medium text-slate-500 mb-1">Shortlisted</p>
               <div className="text-3xl font-semibold text-slate-900">{stats.shortlisted}</div>
-              <p className="text-[12px] text-slate-400 mt-1">Across active campaigns</p>
+              <p className="text-[12px] text-slate-500 mt-1">Across active campaigns</p>
             </div>
             <div className="border-l-2 border-slate-200 pl-4">
               <p className="text-[13px] font-medium text-slate-500 mb-1">Avg Capability Signal</p>
               <div className="text-3xl font-semibold text-slate-900">{stats.avgSignal}</div>
-              <p className="text-[12px] text-slate-400 mt-1">Platform average score</p>
+              <p className="text-[12px] text-slate-500 mt-1">Platform average score</p>
             </div>
           </div>
         </section>
@@ -116,7 +116,7 @@ export default function RecruiterDashboard() {
           <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
             {stats.recentActivity.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 text-center px-4">
-                <Users className="w-8 h-8 text-slate-300 mb-3" />
+                <Users className="w-8 h-8 text-slate-600 mb-3" />
                 <p className="text-slate-900 font-medium text-[15px] mb-1">No activity yet</p>
                 <p className="text-slate-500 text-[14px]">
                   Talent signals will appear here as candidates submit projects and complete challenges.
