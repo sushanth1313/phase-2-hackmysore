@@ -1,0 +1,22 @@
+
+John Doe
+Software Engineer
+Email: john.doe@example.com | Phone: +1 555-0199 | GitHub: https://github.com/johndoe
+
+TECHNICAL SKILLS
+Languages & Frameworks: TypeScript, JavaScript, Node.js, Express, React, Python, FastAPI
+Databases & Cloud: PostgreSQL, MongoDB, Redis, Docker, Kubernetes, AWS
+
+PROFESSIONAL EXPERIENCE
+Senior Backend Engineer | CloudScale Inc. | 2021 - Present
+- Architected high-throughput microservices handling 25,000 requests per second with 99.99% availability.
+- Reduced p99 database query latency by 45% using Redis caching and index optimization in PostgreSQL.
+- Implemented asynchronous event-driven architecture using Kafka message queues for payment processing.
+
+PROJECTS
+ProofHire Core Platform | TypeScript, Node.js, MongoDB, Redis
+- Implemented distributed consensus and idempotent transaction processing.
+- Designed comprehensive automated integration testing suite with 85% test coverage.
+
+EDUCATION
+Bachelor of Science in Computer Science | State University | 2017 - 2021

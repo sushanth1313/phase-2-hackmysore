@@ -1,0 +1,10 @@
+node_modules/
+venv/
+env/
+.env
+.vscode/
+dist/
+build/
+data/
+log/
+scratch/
